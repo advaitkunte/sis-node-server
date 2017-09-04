@@ -6,8 +6,12 @@ var models = require('./models/student.js')
 var routes = require('./routes');
 global.updatingList = new Array()
 
-console.log(credentials)
-mongoose.connect(credentials.mongodb.uri, {user: 'sis', pass: credentials.mongodb.pass}, function(err) {
+mongoose.createConnection(credentials.mongodb.uri, 
+                          {user: 'sis', 
+                           pass: credentials.mongodb.pass,
+                           useMongoClient: true,
+                          }, 
+                          function(err) {
     if (err) throw err;
     console.log("Connected!")
 
