@@ -9,7 +9,7 @@ module.exports = function(app)  {
     app.get('/api/login', function(req, res, next) {
         var usn = req.query.usn.toUpperCase();
         var dob = req.query.dob;
-        console.log("USN" + usn + "DOB" + dob);
+        console.log("USN: " + usn + " , DOB: " + dob);
         console.log("updatingList: " + updatingList)
         Student.exists(usn, function(err, exists) {
             if (err) {
@@ -32,7 +32,7 @@ module.exports = function(app)  {
                                         console.log(err);
                                         return;
                                     }
-                                    console.log(numAffected + "Student updated");
+                                    console.log(numAffected + " Student updated");
                                 });
                             })
                         }else{

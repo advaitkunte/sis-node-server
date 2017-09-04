@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var timestamps = require('mongoose-timestamp');
 
 //defining the schema of the DB
 var SisSchema = mongoose.Schema({
-    usn: String,
+    usn: {type:String, index:true},
     name: String,
     dob: String,
     courses: [{
@@ -19,8 +20,7 @@ var SisSchema = mongoose.Schema({
         cie: String,
         tests: [String],
         assignments: [String]
-    }],
-    updated: {type: Date, default: Date.now, trim: true}
+    }]
 });
 
 //creating a model
@@ -54,7 +54,8 @@ SisSchema.statics.insertStudent = function(student, callback)  {
  }
 SisSchema.statics.updateStudent = function(student, callback) {
     var usn = student.usn;
-    var query = {usn: usn}
+    var query = {usn: usn};
+    console.log(student);
     this.update(query, student, function(err, numAffected)  {
         if(err) {
             console.log("Error Updating student in DB");
@@ -65,5 +66,7 @@ SisSchema.statics.updateStudent = function(student, callback) {
         }
     });
 }
+
+SisSchema.plugin(timestamps);
 
 module.exports = mongoose.model('Student', SisSchema);

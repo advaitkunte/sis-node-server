@@ -8,6 +8,7 @@
     "express": "^4.13.4",
     "express-mongoose": "^0.1.0",
     "mongoose": "^4.4.6",
+    "mongoose-timestamp": "^0.6.0",
     "promise": "^7.1.1",
     "request": "^2.69.0"
   },

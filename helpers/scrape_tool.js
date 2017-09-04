@@ -50,7 +50,6 @@ module.exports = function(usn, dob, callback) {
                 values.forEach(function(course) {
                     student.courses.push(course);
                 });
-                student.update = Date.now()
                 callback(null, student)
             })
             .catch(function(reason) {
